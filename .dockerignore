@@ -1,0 +1,9 @@
+.git
+.agents
+.codex
+creator-agent-studio/.env
+creator-agent-studio/data
+creator-agent-studio/node_modules
+creator-agent-studio/test
+creator-agent-studio/tools
+*.log
