@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#184d3a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="面向小红书与公众号的 AI 内容创作工作台"><title>灵感工坊</title><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icons/icon.svg"><link rel="apple-touch-icon" href="/icons/icon.svg"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/features.css"><link rel="stylesheet" href="/mobile.css"></head>
+<body>
+  <header><div><span class="logo">灵感工坊</span><span class="tag">Creator Agent Studio</span></div><div class="header-actions"><button id="installApp" class="install" hidden>安装到桌面</button><div id="mode" class="status">正在连接…</div></div></header>
+  <main>
+    <aside class="panel brief mobile-page active" data-page="create">
+      <p class="eyebrow">01 创作任务</p><h1>把一个想法，变成两种平台内容</h1>
+      <label>主题<input id="topic" placeholder="例如：内容创作者如何用 AI 提效"></label>
+      <label>目标受众<input id="audience" value="希望提升效率的内容创作者"></label>
+      <label>表达语气<select id="tone"><option>真诚、有洞察、可操作</option><option>轻松、有网感</option><option>专业、克制、可信</option><option>故事感、情绪共鸣</option></select></label>
+      <label>补充要求<textarea id="brief" rows="4" placeholder="希望包含的观点、禁用词、品牌语气…"></textarea></label>
+      <section class="reference-box"><div class="reference-title"><span>参考博主链接</span><small id="referenceCount">0 / 5</small></div><textarea id="referenceLinks" rows="4" placeholder="每行粘贴一条公开内容链接，最多 5 条"></textarea><div class="reference-options"><label><input type="checkbox" id="learnTitle" checked> 标题钩子</label><label><input type="checkbox" id="learnStructure" checked> 内容结构</label><label><input type="checkbox" id="learnRhythm" checked> 表达节奏</label></div><p>只借鉴可迁移方法，不复制原文或冒充博主风格。</p></section>
+      <button id="generate" class="primary">启动 Agent 创作</button>
+      <div class="guard">生成内容仅作为草稿。发布前请核验事实、版权及平台规则。</div>
+      <section><p class="eyebrow">Agent 轨迹</p><ol id="trace"><li>等待任务</li></ol></section>
+    </aside>
+    <section class="workspace mobile-page" data-page="candidates">
+      <div class="workspace-head"><div><p class="eyebrow">02 候选方案</p><h2>选择一个方向继续编辑</h2></div><div class="tabs"><button class="tab active" data-filter="全部">全部</button><button class="tab" data-filter="小红书">小红书</button><button class="tab" data-filter="公众号">公众号</button></div></div>
+      <div id="candidates" class="cards"><div class="empty">输入主题，让内部 Agent 先研究再创作。</div></div>
+      <section id="referenceInsightsBox" class="insights-box" hidden><div class="source-head"><p class="eyebrow">参考博主方法拆解</p><span>结构借鉴 · 非原文复制</span></div><ul id="referenceInsights"></ul></section>
+      <div class="source-head"><p class="eyebrow">联网研究来源</p><span id="sourceHint">等待检索</span></div><div id="sources" class="sources"></div>
+    </section>
+    <aside class="panel editor mobile-page" data-page="editor">
+      <p class="eyebrow">03 编辑与保存</p>
+      <div class="editor-meta"><select id="platform"><option>小红书</option><option>公众号</option></select><span id="count">0 字</span></div>
+      <input id="title" class="title-input" placeholder="标题">
+      <div class="formatbar"><button id="format">应用平台格式</button><span id="formatHint">按当前平台自动排版</span></div>
+      <textarea id="content" class="content-input" placeholder="在这里编辑正文…"></textarea>
+      <section class="visual-box"><div class="visual-head"><div><p class="eyebrow">智能插图</p><strong id="visualPlacement">先载入一篇内容</strong></div><div><button id="downloadImage" hidden>下载图片</button><button id="illustrate">搭配插图</button></div></div><div id="visualPreview" class="visual-preview"><span>AI 将根据标题、正文和平台生成插图方案</span></div><textarea id="visualPrompt" rows="3" placeholder="插图提示词，可在生成前修改"></textarea></section>
+      <div class="actions"><button id="clear">新建</button><button id="copyContent">复制文案</button><button id="save" class="primary">保存草稿</button></div>
+      <div id="saveMessage" class="message"></div>
+      <div class="draft-head"><p class="eyebrow">已保存草稿</p><button id="refresh" class="link">刷新</button></div><input id="draftSearch" class="draft-search" placeholder="搜索标题、平台或主题"><div id="drafts" class="drafts"></div>
+    </aside>
+  </main>
+  <nav class="mobile-nav" aria-label="手机端主导航"><button class="active" data-go="create"><span>✦</span>创作</button><button data-go="candidates"><span>▦</span>候选</button><button data-go="editor"><span>✎</span>编辑</button><button data-go="drafts"><span>▣</span>草稿</button><button data-go="settings"><span>●</span>状态</button></nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script><script type="module" src="/mobile.js"></script>
+</body></html>

@@ -1,0 +1,13 @@
+{
+  "name": "灵感工坊 Creator Agent Studio",
+  "short_name": "灵感工坊",
+  "description": "小红书与公众号 AI 内容创作工作台",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#184d3a",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

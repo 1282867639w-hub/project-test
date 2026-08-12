@@ -1,0 +1,8 @@
+.env
+data/*.tmp
+data/drafts.json
+public/generated/*
+!public/generated/.gitkeep
+.deploy-password.txt
+node_modules/
+npm-debug.log*
