@@ -35,7 +35,7 @@ async function body(req) {
   return raw ? JSON.parse(raw) : {};
 }
 async function staticFile(res, pathname) {
-  const names = { "/": "index.html", "/login": "login.html", "/app.js": "app.js", "/mobile.js": "mobile.js", "/styles.css": "styles.css", "/features.css": "features.css", "/mobile.css": "mobile.css", "/manifest.webmanifest": "manifest.webmanifest", "/sw.js": "sw.js", "/icons/icon.svg": "icons/icon.svg" };
+  const names = { "/": "index.html", "/login": "login.html", "/app.js": "app.js", "/mobile.js": "mobile.js", "/styles.css": "styles.css", "/features.css": "features.css", "/mobile.css": "mobile.css", "/suixinglu.html": "suixinglu.html", "/suixinglu.css": "suixinglu.css", "/manifest.webmanifest": "manifest.webmanifest", "/sw.js": "sw.js", "/icons/icon.svg": "icons/icon.svg" };
   let name = names[pathname]; if (!name && pathname.startsWith("/generated/")) name = pathname.slice(1); if (!name || name.includes("..")) return false;
   const data = await readFile(path.join(publicDir, name));
   const type = name.endsWith(".html") ? "text/html" : name.endsWith(".css") ? "text/css" : name.endsWith(".webmanifest") ? "application/manifest+json" : name.endsWith(".svg") ? "image/svg+xml" : "text/javascript";
