@@ -1,8 +1,8 @@
 {
-  "name": "creator-agent-studio",
-  "version": "0.1.0",
+  "name": "suixinglu-app",
+  "version": "1.0.0",
   "private": true,
-  "description": "面向小红书与公众号的 AI 内容创作工作台",
+  "description": "随行录项目与时间线记录应用",
   "type": "module",
   "scripts": {
     "dev": "node --use-env-proxy --watch src/server.js",
