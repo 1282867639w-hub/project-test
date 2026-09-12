@@ -1,0 +1,10 @@
+create extension if not exists pgcrypto;
+create table if not exists public.projects(id uuid primary key default gen_random_uuid(),user_id uuid not null references auth.users(id) on delete cascade,name text not null,description text not null default '',created_at timestamptz not null default now(),updated_at timestamptz not null default now());
+create table if not exists public.records(id uuid primary key default gen_random_uuid(),user_id uuid not null references auth.users(id) on delete cascade,project_id uuid not null references public.projects(id) on delete cascade,title text not null,content text not null default '',scheduled_at timestamptz not null default now(),done boolean not null default false,completed_at timestamptz,photo_paths text[] not null default '{}',created_at timestamptz not null default now());
+alter table public.projects enable row level security;alter table public.records enable row level security;
+create policy "projects_owner_all" on public.projects for all using(auth.uid()=user_id) with check(auth.uid()=user_id);
+create policy "records_owner_all" on public.records for all using(auth.uid()=user_id) with check(auth.uid()=user_id);
+insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values('project-photos','project-photos',false,10485760,array['image/jpeg','image/png','image/webp','image/heic']) on conflict(id) do nothing;
+create policy "photo_owner_insert" on storage.objects for insert to authenticated with check(bucket_id='project-photos' and (storage.foldername(name))[1]=auth.uid()::text);
+create policy "photo_owner_read" on storage.objects for select to authenticated using(bucket_id='project-photos' and (storage.foldername(name))[1]=auth.uid()::text);
+create policy "photo_owner_delete" on storage.objects for delete to authenticated using(bucket_id='project-photos' and (storage.foldername(name))[1]=auth.uid()::text);

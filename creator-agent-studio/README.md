@@ -20,3 +20,7 @@
 ## 数据说明
 
 当前版本使用浏览器本地存储。正式面向公众运营前，应接入服务端认证、数据库和对象存储。
+
+## uni-app 云端版本
+
+`uniapp/` 是面向 H5、微信小程序和 App 的新客户端，使用 Supabase Auth、PostgreSQL 与 Storage。数据库初始化脚本位于 `supabase/schema.sql`。

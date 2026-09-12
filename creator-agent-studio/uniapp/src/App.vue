@@ -1,0 +1,1 @@
+<script>export default{onLaunch(){console.log('随行录启动')}}</script><style>page{background:#f5faff;color:#16364c;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}button{border:0}button:after{border:0}</style>
