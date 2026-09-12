@@ -1,0 +1,1 @@
+(()=>{const s=document.createElement('div');s.className='app-splash';s.innerHTML='<div class="splash-content"><div class="splash-logo">随</div><h1>随行录</h1><p>记录想法 · 推进每件重要的事</p></div>';document.body.prepend(s);setTimeout(()=>s.classList.add('hide'),900);setTimeout(()=>s.remove(),1500)})();
